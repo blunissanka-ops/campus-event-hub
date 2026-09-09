@@ -3,347 +3,1332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="description" content="Campus Event Hub - Discover, create and join university events.">
     <title>Campus Event Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <header class="navbar">
+<!-- ================= NAVBAR ================= -->
 
-        <div class="logo">
-            🎓 Campus Event Hub
-        </div>
+<header class="navbar">
+    <div class="nav-container">
 
-        <nav>
-            <a href="index.html">Home</a>
+        <a href="#" class="brand">
+            <span class="brand-icon">🎓</span>
+            <span>
+                <strong>Campus</strong>
+                <small>Event Hub</small>
+            </span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
             <a href="#events">Events</a>
             <a href="#categories">Categories</a>
             <a href="#about">About</a>
         </nav>
 
-    </header>
+        <div class="nav-actions">
+            <button class="notification-btn" onclick="showNotification()">
+                🔔
+                <span class="notification-dot"></span>
+            </button>
+
+            <button class="login-btn" onclick="openLogin()">
+                Sign In
+            </button>
+
+            <button class="create-btn" onclick="openCreateEvent()">
+                + Create Event
+            </button>
+        </div>
+
+    </div>
+</header>
 
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+<!-- ================= HERO ================= -->
 
-        <div class="hero-content">
+<section class="hero" id="home">
 
-            <p class="small-title">
-                YOUR CAMPUS • YOUR COMMUNITY
-            </p>
+    <div class="hero-content">
 
-            <h1>
-                Discover What's<br>
-                <span>Happening on Campus.</span>
-            </h1>
+        <div class="hero-badge">
+            ✨ YOUR CAMPUS • YOUR COMMUNITY
+        </div>
 
-            <p class="hero-text">
-                Find events, workshops, competitions, club activities
-                and opportunities happening around your university.
-            </p>
+        <h1>
+            Discover what's<br>
+            <span>happening on campus.</span>
+        </h1>
 
-            <div class="hero-buttons">
+        <p>
+            Find events, workshops, competitions, club activities
+            and opportunities happening around your university.
+        </p>
 
-                <a href="#events" class="primary-button">
-                    Explore Events →
-                </a>
+        <div class="hero-buttons">
+            <button class="primary-btn" onclick="scrollToEvents()">
+                Explore Events →
+            </button>
 
-                <a href="#categories" class="secondary-button">
-                    Browse Categories
-                </a>
+            <button class="secondary-btn" onclick="scrollToCategories()">
+                Browse Categories
+            </button>
+        </div>
+
+    </div>
+
+    <div class="hero-decoration">
+        <div class="floating-card card-one">
+            <span>🎉</span>
+            <div>
+                <strong>New Event</strong>
+                <small>Just posted</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-two">
+            <span>✓</span>
+            <div>
+                <strong>You're in!</strong>
+                <small>Participation confirmed</small>
+            </div>
+        </div>
+
+        <div class="hero-circle"></div>
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="text"
+            id="eventSearch"
+            placeholder="Search events, clubs, workshops..."
+            oninput="searchEvents()"
+        >
+
+        <button onclick="searchEvents()">
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUICK STATS ================= -->
+
+<section class="stats-section">
+
+    <div class="stat">
+        <strong id="eventCount">24+</strong>
+        <span>Events</span>
+    </div>
+
+    <div class="stat">
+        <strong>18</strong>
+        <span>Clubs</span>
+    </div>
+
+    <div class="stat">
+        <strong>1.2K+</strong>
+        <span>Students</span>
+    </div>
+
+    <div class="stat">
+        <strong>96%</strong>
+        <span>Positive Experience</span>
+    </div>
+
+</section>
+
+
+<!-- ================= EVENTS ================= -->
+
+<section class="events-section" id="events">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">DISCOVER</span>
+            <h2>Popular Events</h2>
+            <p>Find something interesting happening around campus.</p>
+        </div>
+
+        <button class="view-all-btn" onclick="showAllEvents()">
+            View all →
+        </button>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button class="filter active" onclick="filterEvents('all', this)">
+            All
+        </button>
+
+        <button class="filter" onclick="filterEvents('academic', this)">
+            📚 Academic
+        </button>
+
+        <button class="filter" onclick="filterEvents('sports', this)">
+            ⚽ Sports
+        </button>
+
+        <button class="filter" onclick="filterEvents('social', this)">
+            🎉 Social
+        </button>
+
+        <button class="filter" onclick="filterEvents('career', this)">
+            💼 Career
+        </button>
+
+        <button class="filter" onclick="filterEvents('technology', this)">
+            💻 Technology
+        </button>
+
+    </div>
+
+
+    <!-- EVENT GRID -->
+
+    <div class="event-grid" id="eventGrid">
+
+
+        <!-- EVENT 1 -->
+
+        <article class="event-card" data-category="technology">
+
+            <div class="event-image technology-image">
+                <span class="event-category">Technology</span>
+
+                <button
+                    class="favorite-btn"
+                    onclick="toggleFavorite(this)"
+                    aria-label="Favorite event"
+                >
+                    ♡
+                </button>
+
+                <div class="event-date">
+                    <strong>18</strong>
+                    <span>SEP</span>
+                </div>
+            </div>
+
+            <div class="event-content">
+
+                <h3>Future Tech Summit 2026</h3>
+
+                <p class="event-description">
+                    Explore emerging technologies and connect with
+                    students passionate about innovation.
+                </p>
+
+                <div class="event-info">
+                    <span>📍 Main Auditorium</span>
+                    <span>🕒 9:00 AM</span>
+                </div>
+
+                <div class="event-footer">
+
+                    <div class="organizer">
+                        <div class="avatar">AK</div>
+                        <div>
+                            <strong>Alex Kumar</strong>
+                            <small>Student Organizer</small>
+                        </div>
+                    </div>
+
+                    <button
+                        class="join-btn"
+                        onclick="requestParticipation('Future Tech Summit 2026')"
+                    >
+                        Request to Join
+                    </button>
+
+                </div>
 
             </div>
 
+        </article>
+
+
+        <!-- EVENT 2 -->
+
+        <article class="event-card" data-category="sports">
+
+            <div class="event-image sports-image">
+
+                <span class="event-category">Sports</span>
+
+                <button
+                    class="favorite-btn"
+                    onclick="toggleFavorite(this)"
+                >
+                    ♡
+                </button>
+
+                <div class="event-date">
+                    <strong>21</strong>
+                    <span>SEP</span>
+                </div>
+
+            </div>
+
+            <div class="event-content">
+
+                <h3>Inter-University Cricket</h3>
+
+                <p class="event-description">
+                    Get ready for an exciting day of competition,
+                    teamwork and university spirit.
+                </p>
+
+                <div class="event-info">
+                    <span>📍 University Grounds</span>
+                    <span>🕒 2:00 PM</span>
+                </div>
+
+                <div class="event-footer">
+
+                    <div class="organizer">
+                        <div class="avatar green">NS</div>
+
+                        <div>
+                            <strong>Nimal Silva</strong>
+                            <small>Sports Club</small>
+                        </div>
+                    </div>
+
+                    <button
+                        class="join-btn"
+                        onclick="requestParticipation('Inter-University Cricket')"
+                    >
+                        Request to Join
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- EVENT 3 -->
+
+        <article class="event-card" data-category="career">
+
+            <div class="event-image career-image">
+
+                <span class="event-category">Career</span>
+
+                <button
+                    class="favorite-btn"
+                    onclick="toggleFavorite(this)"
+                >
+                    ♡
+                </button>
+
+                <div class="event-date">
+                    <strong>25</strong>
+                    <span>SEP</span>
+                </div>
+
+            </div>
+
+            <div class="event-content">
+
+                <h3>Career & Internship Fair</h3>
+
+                <p class="event-description">
+                    Meet leading companies, discover internship
+                    opportunities and build your career network.
+                </p>
+
+                <div class="event-info">
+                    <span>📍 Student Centre</span>
+                    <span>🕒 10:00 AM</span>
+                </div>
+
+                <div class="event-footer">
+
+                    <div class="organizer">
+
+                        <div class="avatar purple">RM</div>
+
+                        <div>
+                            <strong>Ravindu M.</strong>
+                            <small>Career Society</small>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="join-btn"
+                        onclick="requestParticipation('Career & Internship Fair')"
+                    >
+                        Request to Join
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- EVENT 4 -->
+
+        <article class="event-card" data-category="social">
+
+            <div class="event-image social-image">
+
+                <span class="event-category">Social</span>
+
+                <button
+                    class="favorite-btn"
+                    onclick="toggleFavorite(this)"
+                >
+                    ♡
+                </button>
+
+                <div class="event-date">
+                    <strong>28</strong>
+                    <span>SEP</span>
+                </div>
+
+            </div>
+
+            <div class="event-content">
+
+                <h3>Freshers Welcome Night</h3>
+
+                <p class="event-description">
+                    Meet new friends, enjoy music and become part
+                    of the campus community.
+                </p>
+
+                <div class="event-info">
+                    <span>📍 University Hall</span>
+                    <span>🕒 6:30 PM</span>
+                </div>
+
+                <div class="event-footer">
+
+                    <div class="organizer">
+
+                        <div class="avatar orange">JM</div>
+
+                        <div>
+                            <strong>Jessica M.</strong>
+                            <small>Student Union</small>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="join-btn"
+                        onclick="requestParticipation('Freshers Welcome Night')"
+                    >
+                        Request to Join
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories-section" id="categories">
+
+    <div class="section-heading centered">
+
+        <span class="section-label">EXPLORE</span>
+
+        <h2>Find Your Community</h2>
+
+        <p>
+            Explore events based on what you're interested in.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <button
+            class="category-card"
+            onclick="selectCategory('academic')"
+        >
+            <span>📚</span>
+            <strong>Academic</strong>
+            <small>Lectures & workshops</small>
+        </button>
+
+
+        <button
+            class="category-card"
+            onclick="selectCategory('technology')"
+        >
+            <span>💻</span>
+            <strong>Technology</strong>
+            <small>Tech & innovation</small>
+        </button>
+
+
+        <button
+            class="category-card"
+            onclick="selectCategory('sports')"
+        >
+            <span>⚽</span>
+            <strong>Sports</strong>
+            <small>Games & competitions</small>
+        </button>
+
+
+        <button
+            class="category-card"
+            onclick="selectCategory('career')"
+        >
+            <span>💼</span>
+            <strong>Career</strong>
+            <small>Jobs & internships</small>
+        </button>
+
+
+        <button
+            class="category-card"
+            onclick="selectCategory('social')"
+        >
+            <span>🎉</span>
+            <strong>Social</strong>
+            <small>Meetups & celebrations</small>
+        </button>
+
+
+        <button
+            class="category-card"
+            onclick="selectCategory('all')"
+        >
+            <span>✨</span>
+            <strong>Everything</strong>
+            <small>Explore all events</small>
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-section">
+
+    <div class="section-heading centered">
+
+        <span class="section-label">HOW IT WORKS</span>
+
+        <h2>Campus events made simple.</h2>
+
+        <p>
+            Discover events, request participation and connect
+            with your campus community.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">01</div>
+
+            <span>🔎</span>
+
+            <h3>Discover</h3>
+
+            <p>
+                Find events that match your interests.
+            </p>
+
         </div>
 
-    </section>
+
+        <div class="step">
+
+            <div class="step-number">02</div>
+
+            <span>🙋</span>
+
+            <h3>Request</h3>
+
+            <p>
+                Send a participation request to the organizer.
+            </p>
+
+        </div>
 
 
-    <!-- SEARCH -->
-  <div class="search-box">
+        <div class="step">
 
-    <input
-        type="text"
-        id="eventSearch"
-        placeholder="🔍  Search for events..."
-    >
+            <div class="step-number">03</div>
 
-    <button onclick="searchEvents()">
-        Search
+            <span>✅</span>
+
+            <h3>Get Approved</h3>
+
+            <p>
+                The organizer can accept or reject your request.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">04</div>
+
+            <span>🎉</span>
+
+            <h3>Participate</h3>
+
+            <p>
+                Attend the event and connect with others.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CREATE EVENT CTA ================= -->
+
+<section class="create-section">
+
+    <div>
+
+        <span class="section-label">ARE YOU A STUDENT ORGANIZER?</span>
+
+        <h2>Create your own campus event.</h2>
+
+        <p>
+            Share your event with students and build your community.
+        </p>
+
+    </div>
+
+    <button class="primary-btn" onclick="openCreateEvent()">
+        + Create an Event
     </button>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-section" id="about">
+
+    <div class="about-content">
+
+        <span class="section-label">ABOUT CAMPUS EVENT HUB</span>
+
+        <h2>Your campus.<br>One connected community.</h2>
+
+        <p>
+            Campus Event Hub makes it easier for students to discover
+            opportunities, organize events and connect with people
+            who share their interests.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="brand footer-brand">
+
+            <span class="brand-icon">🎓</span>
+
+            <span>
+                <strong>Campus</strong>
+                <small>Event Hub</small>
+            </span>
+
+        </div>
+
+        <p>
+            Built for students. Powered by community.
+        </p>
+
+        <span>
+            © 2026 Campus Event Hub
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal-overlay" id="loginModal">
+
+    <div class="modal">
+
+        <button class="close-modal" onclick="closeModal('loginModal')">
+            ×
+        </button>
+
+        <div class="modal-icon">🎓</div>
+
+        <h2>Welcome back</h2>
+
+        <p>Sign in to manage your events and participation.</p>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="University email"
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+        >
+
+        <button class="modal-primary" onclick="loginUser()">
+            Sign In
+        </button>
+
+        <p class="modal-footer-text">
+            Don't have an account?
+            <button onclick="switchToRegister()">Create one</button>
+        </p>
+
+    </div>
 
 </div>
 
 
-    <!-- CATEGORIES -->
-    <section id="categories" class="section">
+<!-- ================= REGISTER MODAL ================= -->
 
-        <div class="section-heading">
+<div class="modal-overlay" id="registerModal">
 
-            <div>
-                <p class="small-title">EXPLORE</p>
+    <div class="modal">
 
-                <h2>
-                    Find Something<br>
-                    <span>You'll Love.</span>
-                </h2>
-            </div>
-
-            <p>
-                Explore events based on your interests
-                and discover new opportunities.
-            </p>
-
-        </div>
-
-
-        <div class="categories">
-
-            <div class="category-card">
-                <div class="category-icon">🎓</div>
-                <h3>Academic</h3>
-                <p>Lectures, seminars & workshops</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🏆</div>
-                <h3>Competitions</h3>
-                <p>Challenges, contests & hackathons</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">⚽</div>
-                <h3>Sports</h3>
-                <p>Tournaments & sporting events</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">💼</div>
-                <h3>Career</h3>
-                <p>Career fairs & networking</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🎭</div>
-                <h3>Social</h3>
-                <p>Entertainment & social events</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🤝</div>
-                <h3>Clubs</h3>
-                <p>Societies & student activities</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- UPCOMING EVENTS -->
-    <section id="events" class="section events-section">
-
-        <div class="section-heading">
-
-            <div>
-                <p class="small-title">DON'T MISS OUT</p>
-
-                <h2>
-                    Upcoming <span>Events.</span>
-                </h2>
-            </div>
-
-            <a href="#" class="view-all">
-                View All →
-            </a>
-
-        </div>
-
-
-        <div class="events-grid">
-
-
-            <!-- EVENT 1 -->
-            <div class="event-card">
-
-                <div class="event-image academic">
-                    <span>ACADEMIC</span>
-                </div>
-
-                <div class="event-content">
-
-                    <div class="date">
-                        SEP 15, 2026
-                    </div>
-
-                    <h3>
-                        Career Development Workshop
-                    </h3>
-
-                    <p>
-                        Learn how to build your career and
-                        prepare for the professional world.
-                    </p>
-
-                    <div class="event-info">
-                        📍 University Auditorium
-                    </div>
-
-                    <button class="event-button">
-                        View Event →
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- EVENT 2 -->
-            <div class="event-card">
-
-                <div class="event-image competition">
-                    <span>COMPETITION</span>
-                </div>
-
-                <div class="event-content">
-
-                    <div class="date">
-                        SEP 20, 2026
-                    </div>
-
-                    <h3>
-                        Inter-University Innovation Challenge
-                    </h3>
-
-                    <p>
-                        Bring your ideas to life and compete
-                        with talented students.
-                    </p>
-
-                    <div class="event-info">
-                        📍 Innovation Centre
-                    </div>
-
-                    <button class="event-button">
-                        View Event →
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- EVENT 3 -->
-            <div class="event-card">
-
-                <div class="event-image sports">
-                    <span>SPORTS</span>
-                </div>
-
-                <div class="event-content">
-
-                    <div class="date">
-                        SEP 25, 2026
-                    </div>
-
-                    <h3>
-                        University Sports Festival
-                    </h3>
-
-                    <p>
-                        A day full of sports, competition
-                        and university spirit.
-                    </p>
-
-                    <div class="event-info">
-                        📍 University Sports Ground
-                    </div>
-
-                    <button class="event-button">
-                        View Event →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CALL TO ACTION -->
-    <section class="cta">
-
-        <p class="small-title">
-            ARE YOU AN ORGANIZER?
-        </p>
-
-        <h2>
-            Have an event?<br>
-            <span>Let students know.</span>
-        </h2>
-
-        <p>
-            Share your university event with students
-            and reach your campus community.
-        </p>
-
-        <button class="primary-button">
-            Submit an Event →
+        <button class="close-modal" onclick="closeModal('registerModal')">
+            ×
         </button>
 
-    </section>
+        <div class="modal-icon">✨</div>
+
+        <h2>Create your account</h2>
+
+        <p>Join your campus community.</p>
+
+        <input
+            type="text"
+            id="registerName"
+            placeholder="Full name"
+        >
+
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="University email"
+        >
+
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Create password"
+        >
+
+        <button class="modal-primary" onclick="registerUser()">
+            Create Account
+        </button>
+
+    </div>
+
+</div>
 
 
-    <!-- FOOTER -->
-    <footer id="about">
+<!-- ================= CREATE EVENT MODAL ================= -->
 
-        <div class="footer-logo">
-            🎓 Campus Event Hub
-        </div>
+<div class="modal-overlay" id="eventModal">
+
+    <div class="modal large-modal">
+
+        <button class="close-modal" onclick="closeModal('eventModal')">
+            ×
+        </button>
+
+        <span class="section-label">EVENT ORGANIZER</span>
+
+        <h2>Create an Event</h2>
 
         <p>
-            Connecting students with opportunities,
-            activities and experiences.
+            Share something exciting with your campus.
         </p>
 
-        <div class="footer-bottom">
-            © 2026 Campus Event Hub. Built for students.
+
+        <label>Event Name</label>
+
+        <input
+            type="text"
+            id="eventName"
+            placeholder="e.g. Entrepreneurship Workshop"
+        >
+
+
+        <label>Category</label>
+
+        <select id="eventCategory">
+
+            <option value="academic">Academic</option>
+            <option value="technology">Technology</option>
+            <option value="sports">Sports</option>
+            <option value="career">Career</option>
+            <option value="social">Social</option>
+
+        </select>
+
+
+        <label>Description</label>
+
+        <textarea
+            id="eventDescription"
+            placeholder="Tell students about your event..."
+        ></textarea>
+
+
+        <div class="form-row">
+
+            <div>
+
+                <label>Date</label>
+
+                <input
+                    type="date"
+                    id="eventDate"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>Time</label>
+
+                <input
+                    type="time"
+                    id="eventTime"
+                >
+
+            </div>
+
         </div>
 
-    </footer>
+
+        <label>Location</label>
+
+        <input
+            type="text"
+            id="eventLocation"
+            placeholder="e.g. Main Auditorium"
+        >
+
+
+        <button
+            class="modal-primary"
+            onclick="createEvent()"
+        >
+            Publish Event
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= REQUEST MODAL ================= -->
+
+<div class="modal-overlay" id="requestModal">
+
+    <div class="modal">
+
+        <button class="close-modal" onclick="closeModal('requestModal')">
+            ×
+        </button>
+
+        <div class="modal-icon">🙋</div>
+
+        <h2>Request Participation</h2>
+
+        <p id="requestEventName"></p>
+
+        <textarea
+            id="requestMessage"
+            placeholder="Optional message to the organizer..."
+        ></textarea>
+
+        <button
+            class="modal-primary"
+            onclick="sendParticipationRequest()"
+        >
+            Send Request
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <span id="toastIcon">✓</span>
+
+    <div>
+        <strong id="toastTitle">Success</strong>
+        <p id="toastMessage">Action completed.</p>
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
+let selectedEvent = "";
+
+
+/* ---------------- SCROLL ---------------- */
+
+function scrollToEvents() {
+    document.getElementById("events").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+function scrollToCategories() {
+    document.getElementById("categories").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* ---------------- SEARCH ---------------- */
+
 function searchEvents() {
 
-    const searchText =
-        document.getElementById("eventSearch").value.toLowerCase();
+    const search =
+        document.getElementById("eventSearch")
+        .value
+        .toLowerCase()
+        .trim();
 
-    const events =
+    const cards =
         document.querySelectorAll(".event-card");
 
-    events.forEach(function(event) {
+    let visible = 0;
 
-        const eventText =
-            event.innerText.toLowerCase();
+    cards.forEach(card => {
 
-        if (eventText.includes(searchText)) {
-            event.style.display = "block";
+        const text =
+            card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+
+            card.style.display = "";
+
+            visible++;
+
         } else {
-            event.style.display = "none";
+
+            card.style.display = "none";
+
         }
 
     });
 
 }
 
+
+/* ---------------- FILTER ---------------- */
+
+function filterEvents(category, button) {
+
+    document.querySelectorAll(".filter")
+        .forEach(btn => btn.classList.remove("active"));
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    document.querySelectorAll(".event-card")
+        .forEach(card => {
+
+            if (
+                category === "all" ||
+                card.dataset.category === category
+            ) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    scrollToEvents();
+}
+
+
+function selectCategory(category) {
+
+    document.querySelectorAll(".filter")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+            if (
+                category === "all" &&
+                btn.textContent.trim() === "All"
+            ) {
+                btn.classList.add("active");
+            }
+
+        });
+
+    filterEvents(category);
+
+    scrollToEvents();
+}
+
+
+/* ---------------- FAVORITE ---------------- */
+
+function toggleFavorite(button) {
+
+    if (button.classList.contains("liked")) {
+
+        button.classList.remove("liked");
+        button.innerHTML = "♡";
+
+        showToast(
+            "Removed",
+            "Event removed from your favorites.",
+            "♡"
+        );
+
+    } else {
+
+        button.classList.add("liked");
+        button.innerHTML = "♥";
+
+        showToast(
+            "Saved!",
+            "Event added to your favorites.",
+            "♥"
+        );
+
+    }
+
+}
+
+
+/* ---------------- LOGIN ---------------- */
+
+function openLogin() {
+
+    document.getElementById("loginModal")
+        .classList.add("show");
+
+}
+
+
+function loginUser() {
+
+    const email =
+        document.getElementById("loginEmail").value;
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    if (!email || !password) {
+
+        showToast(
+            "Missing information",
+            "Please enter your email and password.",
+            "!"
+        );
+
+        return;
+
+    }
+
+    closeModal("loginModal");
+
+    showToast(
+        "Demo login",
+        "The real account system will be connected next.",
+        "✓"
+    );
+
+}
+
+
+function switchToRegister() {
+
+    closeModal("loginModal");
+
+    document.getElementById("registerModal")
+        .classList.add("show");
+
+}
+
+
+function registerUser() {
+
+    const name =
+        document.getElementById("registerName").value;
+
+    const email =
+        document.getElementById("registerEmail").value;
+
+    const password =
+        document.getElementById("registerPassword").value;
+
+    if (!name || !email || !password) {
+
+        showToast(
+            "Missing information",
+            "Please complete all fields.",
+            "!"
+        );
+
+        return;
+
+    }
+
+    closeModal("registerModal");
+
+    showToast(
+        "Account ready",
+        "Real account storage will be connected next.",
+        "✓"
+    );
+
+}
+
+
+/* ---------------- CREATE EVENT ---------------- */
+
+function openCreateEvent() {
+
+    document.getElementById("eventModal")
+        .classList.add("show");
+
+}
+
+
+function createEvent() {
+
+    const name =
+        document.getElementById("eventName").value;
+
+    const description =
+        document.getElementById("eventDescription").value;
+
+    const location =
+        document.getElementById("eventLocation").value;
+
+    if (!name || !description || !location) {
+
+        showToast(
+            "Missing information",
+            "Please complete the event details.",
+            "!"
+        );
+
+        return;
+
+    }
+
+    closeModal("eventModal");
+
+    showToast(
+        "Event created!",
+        "Your event is ready to be published.",
+        "🎉"
+    );
+
+}
+
+
+/* ---------------- PARTICIPATION ---------------- */
+
+function requestParticipation(eventName) {
+
+    selectedEvent = eventName;
+
+    document.getElementById("requestEventName")
+        .innerText =
+        "You're requesting to participate in: " + eventName;
+
+    document.getElementById("requestModal")
+        .classList.add("show");
+
+}
+
+
+function sendParticipationRequest() {
+
+    closeModal("requestModal");
+
+    showToast(
+        "Request sent!",
+        "The event organizer can now review your request.",
+        "✓"
+    );
+
+}
+
+
+/* ---------------- NOTIFICATION ---------------- */
+
+function showNotification() {
+
+    showToast(
+        "Notifications",
+        "Your notifications will appear here.",
+        "🔔"
+    );
+
+}
+
+
+/* ---------------- VIEW ALL ---------------- */
+
+function showAllEvents() {
+
+    document.querySelectorAll(".event-card")
+        .forEach(card => {
+
+            card.style.display = "";
+
+        });
+
+    document.getElementById("eventSearch")
+        .value = "";
+
+    showToast(
+        "All events",
+        "Showing all available events.",
+        "✨"
+    );
+
+}
+
+
+/* ---------------- MODAL ---------------- */
+
+function closeModal(id) {
+
+    document.getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+document.querySelectorAll(".modal-overlay")
+    .forEach(overlay => {
+
+        overlay.addEventListener("click", function(e) {
+
+            if (e.target === overlay) {
+
+                overlay.classList.remove("show");
+
+            }
+
+        });
+
+    });
+
+
+/* ---------------- TOAST ---------------- */
+
+function showToast(title, message, icon = "✓") {
+
+    const toast =
+        document.getElementById("toast");
+
+    document.getElementById("toastTitle")
+        .innerText = title;
+
+    document.getElementById("toastMessage")
+        .innerText = message;
+
+    document.getElementById("toastIcon")
+        .innerText = icon;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3500);
+
+}
+
 </script>
+
 </body>
 </html>
