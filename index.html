@@ -65,22 +65,19 @@
 
 
     <!-- SEARCH -->
-    <section class="search-section">
+  <div class="search-box">
 
-        <div class="search-box">
+    <input
+        type="text"
+        id="eventSearch"
+        placeholder="🔍  Search for events..."
+    >
 
-            <input
-                type="text"
-                placeholder="🔍  Search for events..."
-            >
+    <button onclick="searchEvents()">
+        Search
+    </button>
 
-            <button>
-                Search
-            </button>
-
-        </div>
-
-    </section>
+</div>
 
 
     <!-- CATEGORIES -->
@@ -322,6 +319,31 @@
 
     </footer>
 
+<script>
 
+function searchEvents() {
+
+    const searchText =
+        document.getElementById("eventSearch").value.toLowerCase();
+
+    const events =
+        document.querySelectorAll(".event-card");
+
+    events.forEach(function(event) {
+
+        const eventText =
+            event.innerText.toLowerCase();
+
+        if (eventText.includes(searchText)) {
+            event.style.display = "block";
+        } else {
+            event.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
 </body>
 </html>
