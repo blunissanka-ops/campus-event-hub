@@ -5,21 +5,323 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Campus Event Hub</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Campus Event Hub</h1>
+    <!-- NAVIGATION -->
+    <header class="navbar">
 
-    <h2>Discover What's Happening on Campus</h2>
+        <div class="logo">
+            🎓 Campus Event Hub
+        </div>
 
-    <p>
-        Find workshops, competitions, club activities,
-        career events and more.
-    </p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#events">Events</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+        </nav>
 
-    <button>Explore Events</button>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                YOUR CAMPUS • YOUR COMMUNITY
+            </p>
+
+            <h1>
+                Discover What's<br>
+                <span>Happening on Campus.</span>
+            </h1>
+
+            <p class="hero-text">
+                Find events, workshops, competitions, club activities
+                and opportunities happening around your university.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#events" class="primary-button">
+                    Explore Events →
+                </a>
+
+                <a href="#categories" class="secondary-button">
+                    Browse Categories
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="🔍  Search for events..."
+            >
+
+            <button>
+                Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="small-title">EXPLORE</p>
+
+                <h2>
+                    Find Something<br>
+                    <span>You'll Love.</span>
+                </h2>
+            </div>
+
+            <p>
+                Explore events based on your interests
+                and discover new opportunities.
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+            <div class="category-card">
+                <div class="category-icon">🎓</div>
+                <h3>Academic</h3>
+                <p>Lectures, seminars & workshops</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🏆</div>
+                <h3>Competitions</h3>
+                <p>Challenges, contests & hackathons</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">⚽</div>
+                <h3>Sports</h3>
+                <p>Tournaments & sporting events</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">💼</div>
+                <h3>Career</h3>
+                <p>Career fairs & networking</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎭</div>
+                <h3>Social</h3>
+                <p>Entertainment & social events</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🤝</div>
+                <h3>Clubs</h3>
+                <p>Societies & student activities</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- UPCOMING EVENTS -->
+    <section id="events" class="section events-section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="small-title">DON'T MISS OUT</p>
+
+                <h2>
+                    Upcoming <span>Events.</span>
+                </h2>
+            </div>
+
+            <a href="#" class="view-all">
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="events-grid">
+
+
+            <!-- EVENT 1 -->
+            <div class="event-card">
+
+                <div class="event-image academic">
+                    <span>ACADEMIC</span>
+                </div>
+
+                <div class="event-content">
+
+                    <div class="date">
+                        SEP 15, 2026
+                    </div>
+
+                    <h3>
+                        Career Development Workshop
+                    </h3>
+
+                    <p>
+                        Learn how to build your career and
+                        prepare for the professional world.
+                    </p>
+
+                    <div class="event-info">
+                        📍 University Auditorium
+                    </div>
+
+                    <button class="event-button">
+                        View Event →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENT 2 -->
+            <div class="event-card">
+
+                <div class="event-image competition">
+                    <span>COMPETITION</span>
+                </div>
+
+                <div class="event-content">
+
+                    <div class="date">
+                        SEP 20, 2026
+                    </div>
+
+                    <h3>
+                        Inter-University Innovation Challenge
+                    </h3>
+
+                    <p>
+                        Bring your ideas to life and compete
+                        with talented students.
+                    </p>
+
+                    <div class="event-info">
+                        📍 Innovation Centre
+                    </div>
+
+                    <button class="event-button">
+                        View Event →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENT 3 -->
+            <div class="event-card">
+
+                <div class="event-image sports">
+                    <span>SPORTS</span>
+                </div>
+
+                <div class="event-content">
+
+                    <div class="date">
+                        SEP 25, 2026
+                    </div>
+
+                    <h3>
+                        University Sports Festival
+                    </h3>
+
+                    <p>
+                        A day full of sports, competition
+                        and university spirit.
+                    </p>
+
+                    <div class="event-info">
+                        📍 University Sports Ground
+                    </div>
+
+                    <button class="event-button">
+                        View Event →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="cta">
+
+        <p class="small-title">
+            ARE YOU AN ORGANIZER?
+        </p>
+
+        <h2>
+            Have an event?<br>
+            <span>Let students know.</span>
+        </h2>
+
+        <p>
+            Share your university event with students
+            and reach your campus community.
+        </p>
+
+        <button class="primary-button">
+            Submit an Event →
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer id="about">
+
+        <div class="footer-logo">
+            🎓 Campus Event Hub
+        </div>
+
+        <p>
+            Connecting students with opportunities,
+            activities and experiences.
+        </p>
+
+        <div class="footer-bottom">
+            © 2026 Campus Event Hub. Built for students.
+        </div>
+
+    </footer>
+
 
 </body>
 </html>
