@@ -3,14 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>StudyVault LK | Learn. Share. Grow.</title>
-
-    <meta
-        name="description"
-        content="StudyVault LK is a student resource-sharing platform for Sri Lankan university students."
-    >
-
+    <title>Campus Event Hub</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -19,182 +12,104 @@
 <header class="navbar">
     <div class="container nav-container">
 
-        <a href="index.html" class="brand">
-            <div class="brand-icon">SV</div>
-            <div>
-                <strong>StudyVault LK</strong>
-                <span>Learn. Share. Grow.</span>
-            </div>
+        <a href="index.html" class="logo">
+            🎓 Campus Event Hub
         </a>
 
-        <nav class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="browse.html">Browse</a>
-            <a href="upload.html">Upload</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="create-event.html">Create Event</a>
             <a href="dashboard.html">Dashboard</a>
         </nav>
 
-        <div class="nav-actions" id="navActions">
+        <div id="authArea">
             <a href="login.html" class="btn btn-outline">Login</a>
-            <a href="register.html" class="btn btn-primary">Join Free</a>
         </div>
-
-        <button class="mobile-menu" id="mobileMenu">☰</button>
 
     </div>
 </header>
 
-
-<main>
-
 <section class="hero">
-    <div class="container hero-grid">
 
-        <div class="hero-content">
+    <div class="container hero-content">
 
-            <div class="eyebrow">
-                🇱🇰 Built for Sri Lankan Students
-            </div>
+        <div class="hero-text">
+            <span class="badge">Sri Lanka's Campus Event Platform</span>
 
             <h1>
-                Your knowledge.
-                <span>Your vault.</span>
+                Discover What's
+                <span>Happening on Campus.</span>
             </h1>
 
             <p>
-                Discover lecture notes, past papers, assignments,
-                study guides and valuable academic resources shared
-                by students.
+                Find university events, workshops, competitions,
+                sports, cultural events and networking opportunities
+                all in one place.
             </p>
 
             <div class="hero-buttons">
-                <a href="browse.html" class="btn btn-primary btn-large">
-                    Explore Resources
+                <a href="events.html" class="btn btn-primary">
+                    Explore Events
                 </a>
 
-                <a href="upload.html" class="btn btn-secondary btn-large">
-                    Upload a Resource
+                <a href="create-event.html" class="btn btn-outline">
+                    Create an Event
                 </a>
             </div>
-
-            <div class="hero-trust">
-                <span>✓ Free to use</span>
-                <span>✓ Student focused</span>
-                <span>✓ Share knowledge</span>
-            </div>
-
-        </div>
-
-
-        <div class="hero-card">
-
-            <div class="floating-card card-one">
-                <div class="file-icon pdf">PDF</div>
-                <div>
-                    <strong>Past Papers</strong>
-                    <small>Finance • 2025</small>
-                </div>
-            </div>
-
-            <div class="vault-visual">
-
-                <div class="vault-circle">
-                    <div class="vault-lock">🔐</div>
-                </div>
-
-                <h3>StudyVault</h3>
-                <p>Your academic resources, organized.</p>
-
-            </div>
-
-            <div class="floating-card card-two">
-                <div class="file-icon doc">DOC</div>
-                <div>
-                    <strong>Lecture Notes</strong>
-                    <small>HRM • Semester 1</small>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<section class="stats-section">
-
-    <div class="container stats-grid">
-
-        <div class="stat">
-            <strong id="resourceCount">0</strong>
-            <span>Resources</span>
-        </div>
-
-        <div class="stat">
-            <strong id="studentCount">0</strong>
-            <span>Students</span>
-        </div>
-
-        <div class="stat">
-            <strong id="downloadCount">0</strong>
-            <span>Downloads</span>
-        </div>
-
-        <div class="stat">
-            <strong>100%</strong>
-            <span>Free</span>
         </div>
 
     </div>
 
 </section>
-
 
 <section class="section">
 
     <div class="container">
 
         <div class="section-heading">
-
             <div>
-                <span class="section-label">DISCOVER</span>
-                <h2>Find what you need</h2>
-                <p>
-                    Browse academic resources uploaded by students.
-                </p>
+                <span class="small-title">EXPLORE</span>
+                <h2>Popular Categories</h2>
             </div>
-
-            <a href="browse.html" class="text-link">
-                View all →
-            </a>
-
         </div>
-
 
         <div class="category-grid">
 
-            <a href="browse.html?category=Past%20Papers" class="category-card">
-                <div class="category-icon">📄</div>
-                <h3>Past Papers</h3>
-                <p>Prepare with previous examinations.</p>
+            <a href="events.html?category=Academic" class="category-card">
+                📚
+                <h3>Academic</h3>
+                <p>Lectures & seminars</p>
             </a>
 
-            <a href="browse.html?category=Lecture%20Notes" class="category-card">
-                <div class="category-icon">📚</div>
-                <h3>Lecture Notes</h3>
-                <p>Share and discover lecture materials.</p>
+            <a href="events.html?category=Career" class="category-card">
+                💼
+                <h3>Career</h3>
+                <p>Career opportunities</p>
             </a>
 
-            <a href="browse.html?category=Assignments" class="category-card">
-                <div class="category-icon">📝</div>
-                <h3>Assignments</h3>
-                <p>Find useful academic references.</p>
+            <a href="events.html?category=Sports" class="category-card">
+                🏆
+                <h3>Sports</h3>
+                <p>Games & competitions</p>
             </a>
 
-            <a href="browse.html?category=Study%20Guides" class="category-card">
-                <div class="category-icon">🎓</div>
-                <h3>Study Guides</h3>
-                <p>Learn smarter with curated resources.</p>
+            <a href="events.html?category=Cultural" class="category-card">
+                🎭
+                <h3>Cultural</h3>
+                <p>Arts & culture</p>
+            </a>
+
+            <a href="events.html?category=Workshop" class="category-card">
+                💡
+                <h3>Workshops</h3>
+                <p>Learn new skills</p>
+            </a>
+
+            <a href="events.html?category=Networking" class="category-card">
+                🤝
+                <h3>Networking</h3>
+                <p>Meet new people</p>
             </a>
 
         </div>
@@ -203,101 +118,33 @@
 
 </section>
 
-
-<section class="section featured-section">
+<section class="section section-light">
 
     <div class="container">
 
         <div class="section-heading">
             <div>
-                <span class="section-label">FEATURED</span>
-                <h2>Popular resources</h2>
+                <span class="small-title">DON'T MISS OUT</span>
+                <h2>Upcoming Events</h2>
             </div>
 
-            <a href="browse.html" class="text-link">
-                Browse all →
+            <a href="events.html" class="view-link">
+                View All →
             </a>
         </div>
 
-        <div class="resource-grid" id="featuredResources"></div>
+        <div id="homeEvents" class="event-grid"></div>
 
     </div>
 
 </section>
 
-
-<section class="cta-section">
-
-    <div class="container">
-
-        <div class="cta-card">
-
-            <div>
-                <span class="section-label">BUILD TOGETHER</span>
-
-                <h2>
-                    Have something useful?
-                    Share it with another student.
-                </h2>
-
-                <p>
-                    Your notes today could help another student
-                    tomorrow.
-                </p>
-            </div>
-
-            <a href="upload.html" class="btn btn-primary btn-large">
-                Share a Resource
-            </a>
-
-        </div>
-
+<footer>
+    <div class="container footer-content">
+        <h3>Campus Event Hub</h3>
+        <p>Discover. Connect. Experience.</p>
+        <p>© 2026 Campus Event Hub</p>
     </div>
-
-</section>
-
-</main>
-
-
-<footer class="footer">
-
-    <div class="container footer-grid">
-
-        <div>
-            <a href="index.html" class="brand footer-brand">
-                <div class="brand-icon">SV</div>
-                <div>
-                    <strong>StudyVault LK</strong>
-                    <span>Learn. Share. Grow.</span>
-                </div>
-            </a>
-
-            <p>
-                A student-driven academic resource-sharing
-                platform for Sri Lanka.
-            </p>
-        </div>
-
-        <div>
-            <h4>Platform</h4>
-            <a href="browse.html">Browse</a>
-            <a href="upload.html">Upload</a>
-            <a href="dashboard.html">Dashboard</a>
-        </div>
-
-        <div>
-            <h4>Account</h4>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>
-            <a href="favorites.html">Favorites</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        © 2026 StudyVault LK. Built for students.
-    </div>
-
 </footer>
 
 <script src="js/app.js"></script>
